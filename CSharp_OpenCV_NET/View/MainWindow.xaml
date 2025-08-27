@@ -1,0 +1,35 @@
+﻿<Window x:Class="CSharp_OpenCV_NET.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSharp_OpenCV_NET.View"
+        xmlns:vm="clr-namespace:CSharp_OpenCV_NET.ViewModel"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="20">
+            <!-- 输入框绑定 NewTitle -->
+            <TextBox Text="{Binding NewTitle, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" />
+
+            <!-- 新增按钮绑定 AddCommand -->
+            <Button Content="Add" Command="{Binding AddCommand}"/>
+
+            <!-- 列表显示 Items -->
+            <ListBox ItemsSource="{Binding Items}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Title}" Width="200"/>
+                            <Button Content="Delete"
+                                Command="{Binding DataContext.RemoveCommand,
+                                          RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                CommandParameter="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>
