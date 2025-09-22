@@ -1,5 +1,4 @@
-﻿using CSharp_OpenCV_NET.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CSharp_OpenCV_NET.View
+namespace CSharp_OpenCV_NET.Views
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -23,7 +22,6 @@ namespace CSharp_OpenCV_NET.View
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
         }
     }
 }
