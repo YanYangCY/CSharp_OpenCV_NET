@@ -6,15 +6,16 @@
 -View:XAML+控件+样式
   c. 在Model中新建属性
   d.  在ViewModel中使用[ObservableProperty]来让编译器生成一个"带通知功能"的属性
-  e.  在ViewModel中使用[RelayCommand]来实现ICommand接口,将方法转换为命令
+  e.  在ViewModel中使用[RelayCommand]来实现ICommand接口，将方法转换为命令
   f.  在View中设计界面并绑定数据
   g.  在App.xaml.cs配置依赖注入容器
-  h.  新建Services文件夹,用于依赖注入获取窗口
+  h.  新建Services文件夹，用于依赖注入获取窗口
 2. 第二部分：导入MaterialDesign3设计规范,方便后期GUI优化
   a. NuGet程序包下载：MaterialDesignThemes、MaterialDesignColors
   b. 全局启用MD3主题：打开App.xaml，添加资源字典加载样式和颜色
 3. 第三部分：搭建主窗口菜单栏
-  a. 
+  a. 新建用户控件，调整布局
+  b. 在主页面中引入菜单栏控件
 
 第二部分：搭建初始化启动页面、主窗口菜单栏、日志模块、GUI优化
 
