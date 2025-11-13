@@ -4,6 +4,7 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using CSharp_OpenCV_NET.Views;
 using CSharp_OpenCV_NET.Services;
+using CSharp_OpenCV_NET.ViewModels;
 
 //using CSharp_OpenCV_NET.ViewModels;
 
@@ -22,24 +23,39 @@ namespace CSharp_OpenCV_NET
         {
             // 创建一个服务集合，用于注册服务（包括ViewModels和Views）-配置依赖注入容器
             var services = new ServiceCollection();
-            // 注册ViewModels,AddTransient每次请求该服务时都会创建一个新的实例
-            //services.AddTransient<UserViewModel>();
-            // 注册Views
-            services.AddTransient<MainWindow>();
 
-            // 构建ServiceProvider并赋值给静态属性，以便在应用程序中任何地方都可以使用
-            ServiceProvider = services.BuildServiceProvider();
-
+            /* 1. 先注册所有服务、VM、窗体 */
             // 把"导航服务"注册到 .NET 的依赖注入（DI）容器
             services.AddSingleton<INavigationService, NavigationService>();
+
+            // 注册ViewModels,AddTransient每次请求该服务时都会创建一个新的实例
+            // 注册Views
+            services.AddTransient<MainWindow>();
+            services.AddTransient<SplashWindow>();
+            // 注册ViewModel
+            services.AddTransient<SplashViewModel>();
+            
+
+            /* 2. BuildServiceProvider */
+            // 构建ServiceProvider并赋值给静态属性，以便在应用程序中任何地方都可以使用
+            ServiceProvider = services.BuildServiceProvider();      
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            // / 从容器中获取主窗口并显示
+            // 从容器中获取主窗口并显示
             var mainWindow = ServiceProvider?.GetService<MainWindow>();
+
+            /* 启动屏（DI + DataContext） */
+            var splash = ServiceProvider!.GetRequiredService<SplashWindow>();
+            splash.DataContext = ServiceProvider!.GetRequiredService<SplashViewModel>();
+            splash.ShowDialog();          // 等它自己发消息关闭
+
+            // 显示主窗口
             mainWindow?.Show();
+
+            
         }
 
     }

@@ -16,6 +16,17 @@
 3. 第三部分：搭建主窗口菜单栏
   a. 新建用户控件，调整布局
   b. 在主页面中引入菜单栏控件
+4. 第四部分：搭建初始化启动页面
+  a. 在Views文件夹中新建SplashWindow页面，用于启动显示
+  b. 新建Assets文件夹用来存放管理核心资源目录：字体、图片、图标等
+  c. 窗体加载就执行命令：NuGet程序包下载：Microsoft.Xaml.Behaviors.Wpf
+  d. 在SplashViewModel中新建[RelayCommand]，用来初始化一些加载操作
+  e. 在App.xaml.cs中注册vm、窗体到容器
+
+
+新建全局存储路径、引入日志模块
+  a. 新建Configuration文件夹集中管理路径、配置项
+  b. 新建AppPath.cs用于配置静态路径，（同时默认在App.xaml.cs中执行新建文件夹，后期可放置在初始化启动当中）
 
 第二部分：搭建初始化启动页面、主窗口菜单栏、日志模块、GUI优化
 
