@@ -25,10 +25,10 @@
 5. 第五部分：新建全局存储路径、引入日志模块
   a. 新建Configuration文件夹集中管理路径、配置项
   b. 新建AppPath.cs用于配置静态路径，（同时默认放置在初始化启动执行新建文件夹）
-  c. 
+  c. NuGet程序包下载：log4net（这边使用的原生log4net，未使用Log4NetWrapperLite这种非官方封装）
+  d. 新建Log文件夹存放：log4net.config、 CustomLogFormatter.cs、MTLogger.cs、ILogFormatter.cs （固定套路）
+  e. 关于log相关存放位置、命名等修改都在log4net.config中进行配置
 
-
-新建全局存储路径、引入日志模块
 
 
 第二部分：搭建初始化启动页面、主窗口菜单栏、日志模块、GUI优化
