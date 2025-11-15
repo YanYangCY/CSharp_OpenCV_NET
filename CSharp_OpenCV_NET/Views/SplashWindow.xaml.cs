@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
+using CSharp_OpenCV_NET.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace CSharp_OpenCV_NET.Views
         public SplashWindow()
         {
             InitializeComponent();
+
             // 1. 注册（用 WeakReferenceMessenger），收到"CloseSplashWindow"字符串就执行关闭操作
             WeakReferenceMessenger.Default.Register<string, string>(this, "CloseSplashWindow");
             // 2. 卸载时注销，防止内存泄露

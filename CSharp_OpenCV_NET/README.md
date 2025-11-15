@@ -22,11 +22,14 @@
   c. 窗体加载就执行命令：NuGet程序包下载：Microsoft.Xaml.Behaviors.Wpf
   d. 在SplashViewModel中新建[RelayCommand]，用来初始化一些加载操作
   e. 在App.xaml.cs中注册vm、窗体到容器
+5. 第五部分：新建全局存储路径、引入日志模块
+  a. 新建Configuration文件夹集中管理路径、配置项
+  b. 新建AppPath.cs用于配置静态路径，（同时默认放置在初始化启动执行新建文件夹）
+  c. 
 
 
 新建全局存储路径、引入日志模块
-  a. 新建Configuration文件夹集中管理路径、配置项
-  b. 新建AppPath.cs用于配置静态路径，（同时默认在App.xaml.cs中执行新建文件夹，后期可放置在初始化启动当中）
+
 
 第二部分：搭建初始化启动页面、主窗口菜单栏、日志模块、GUI优化
 
