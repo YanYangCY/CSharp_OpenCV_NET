@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using CSharp_OpenCV_NET.Views;
 using CSharp_OpenCV_NET.Services;
 using CSharp_OpenCV_NET.ViewModels;
+using log4net.Config;
+using System.IO;
 
 //using CSharp_OpenCV_NET.ViewModels;
 
@@ -29,6 +31,13 @@ namespace CSharp_OpenCV_NET
         /// </summary>
         public App()
         {
+            // ★★★ 必须在任何日志调用之前 ★★★
+            var cfg = new FileInfo(@"Log\log4net.config");
+            if (!cfg.Exists)
+                throw new FileNotFoundException("找不到 log4net.config");
+            XmlConfigurator.ConfigureAndWatch(cfg);   // 会监控文件变化
+
+
             // ========== 注册应用程序组件 ==========
             // 创建一个服务集合，用于注册服务（包括ViewModels和Views）-配置依赖注入容器
             var services = new ServiceCollection();
