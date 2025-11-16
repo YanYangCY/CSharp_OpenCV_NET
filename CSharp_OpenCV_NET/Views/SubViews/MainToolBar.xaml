@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:CSharp_OpenCV_NET.Views.SubViews"
              xmlns:convert="clr-namespace:CSharp_OpenCV_NET.Converter"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
              mc:Ignorable="d" 
@@ -133,8 +134,11 @@
             <TextBlock Margin="10 5 0 5" Grid.Row="0" HorizontalAlignment="Left" Text="视觉检测检测系统" FontSize="22" FontWeight="Bold"/>
             <TextBlock Margin="10 5 0 0" Grid.Row="1" HorizontalAlignment="Left" Text="Vision科技股份有限公司" FontSize="14"/>
         </Grid>
-        
+
         <!-- 切换模式 -->
-        <CheckBox Grid.Column="2" Grid.ColumnSpan="2" Style="{DynamicResource BlueSwitchStyle}" />
+        <CheckBox Grid.Column="2" Grid.ColumnSpan="2" Style="{DynamicResource BlueSwitchStyle}" IsChecked="{Binding AppStatus.IsOnline, Mode=TwoWay}"
+             IsEnabled="{Binding AStatus.InitStatus,Converter={StaticResource InitStatusConvert}}"
+                 Command="{Binding SwitchRunModeCommand}" />
+        <Label Grid.Column="4" Content="{Binding AppStatus.NumAdd}" HorizontalAlignment="Left" Margin="46,24,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>
