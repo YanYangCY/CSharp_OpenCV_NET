@@ -9,7 +9,7 @@
   e.  在ViewModel中使用[RelayCommand]来实现ICommand接口，将方法转换为命令
   f.  在View中设计界面并绑定数据
   g.  在App.xaml.cs配置依赖注入容器
-  h.  新建Services文件夹，用于依赖注入获取窗口
+  h.  新建Services文件夹，用于依赖注入获取窗口（未实际使用）
 2. 第二部分：导入MaterialDesign3设计规范,方便后期GUI优化
   a. NuGet程序包下载：MaterialDesignThemes、MaterialDesignColors
   b. 全局启用MD3主题：打开App.xaml，添加资源字典加载样式和颜色
@@ -28,16 +28,19 @@
   c. NuGet程序包下载：log4net（这边使用的原生log4net，未使用Log4NetWrapperLite这种非官方封装）
   d. 新建Log文件夹存放：log4net.config、 CustomLogFormatter.cs、MTLogger.cs、ILogFormatter.cs （固定套路）
   e. 关于log相关存放位置、命名等修改都在log4net.config中进行配置
+6. 第六部分：Model的注册和调用
+  a. 给模型添加可通知属性；在App.xaml.cs里面注册Model的单例
+  b. 可以在VM里面注入并使用，
+ 
+ 
 
 
 
-第二部分：搭建初始化启动页面、主窗口菜单栏、日志模块、GUI优化
+1. 用户登录权限分级
 
 
 
-
-
-第三部分：通讯测试模块
+第三部分：通讯测试模块、用户登录权限、配方模块
 
 
 第四部分：搭建相机管理模块

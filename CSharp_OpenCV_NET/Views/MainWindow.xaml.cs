@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CSharp_OpenCV_NET.Views.SubViews;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +24,8 @@ namespace CSharp_OpenCV_NET.Views
         public MainWindow()
         {
             InitializeComponent();
-            
+        
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

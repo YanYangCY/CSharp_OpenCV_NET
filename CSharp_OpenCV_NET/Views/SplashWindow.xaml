@@ -7,6 +7,11 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:core="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        Topmost="True"
         Title="SplashWindow" Height="400" Width="600">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -21,9 +26,12 @@
         </Grid.RowDefinitions>
         <!-- 背景图片（资源嵌入） -->
         <Image Grid.RowSpan="3" Source="/CSharp_OpenCV_NET;component/Assets/Images/Splash.jpg" Stretch="Fill"/>
+        <!--<Rectangle Grid.RowSpan="3" Fill="Blue"/>
+        --><!-- 用颜色块测试 -->
+
         <!-- 初始化进度文本信息 -->
-        <TextBlock   Margin="20 0 0 5" Grid.Row="1" Text="{Binding Tips}" FontSize="18"/>
+        <!--<TextBlock   Margin="20 0 0 5" Grid.Row="1" Text="{Binding Tips}" FontSize="18"/>-->
         <!-- 进度条 -->
-        <ProgressBar Margin="20 5 0 0" Grid.Row="2" Height="25" Minimum="0" Maximum="100" Value="{Binding Progress}" Style="{x:Null}"/>
+        <!--<ProgressBar Margin="20 5 0 0" Grid.Row="2" Height="25" Minimum="0" Maximum="100" Value="{Binding Progress}" Style="{x:Null}"/>-->
     </Grid>
 </Window>

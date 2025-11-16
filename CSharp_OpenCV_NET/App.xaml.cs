@@ -7,6 +7,8 @@ using CSharp_OpenCV_NET.Services;
 using CSharp_OpenCV_NET.ViewModels;
 using log4net.Config;
 using System.IO;
+using CSharp_OpenCV_NET.Models;
+using CSharp_OpenCV_NET.Views.SubViews;
 
 //using CSharp_OpenCV_NET.ViewModels;
 
@@ -48,13 +50,24 @@ namespace CSharp_OpenCV_NET
             // 注册Views
             services.AddTransient<MainWindow>();
             services.AddTransient<SplashWindow>();
+            services.AddTransient<MainToolBar>();
             // 注册ViewModel
+            services.AddTransient<MainViewModel>();
             services.AddTransient<SplashViewModel>();
+            
+            // 注册Model，AddSingleton整个程序生命周期只创建 1 个 实例，全局共享
+            services.AddSingleton<AppStatusModel>();
+
 
             // ========== 构建服务提供者 ==========
             // 构建 IServiceProvider 实例，并赋值给静态属性，供后续启动流程使用
             ServiceProvider = services.BuildServiceProvider();      
         }
+
+        /// <summary>
+        /// Model的静态快捷属性
+        /// </summary>
+        //public static AppStatusModel AStatus => ServiceProvider!.GetRequiredService<AppStatusModel>();
 
         /// <summary>
         /// 应用程序启动时调用，控制启动顺序：
@@ -67,6 +80,7 @@ namespace CSharp_OpenCV_NET
             base.OnStartup(e);
             // 从容器中获取主窗口（暂不显示）
             var mainWindow = ServiceProvider?.GetService<MainWindow>();
+            mainWindow.DataContext = ServiceProvider.GetRequiredService<MainViewModel>();
 
             /* 启动屏（DI + DataContext） */
             var splash = ServiceProvider!.GetRequiredService<SplashWindow>();
