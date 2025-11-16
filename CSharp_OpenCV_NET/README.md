@@ -28,9 +28,9 @@
   c. NuGet程序包下载：log4net（这边使用的原生log4net，未使用Log4NetWrapperLite这种非官方封装）
   d. 新建Log文件夹存放：log4net.config、 CustomLogFormatter.cs、MTLogger.cs、ILogFormatter.cs （固定套路）
   e. 关于log相关存放位置、命名等修改都在log4net.config中进行配置
-6. 第六部分：Model的注册和调用
-  a. 给模型添加可通知属性；在App.xaml.cs里面注册Model的单例
-  b. 可以在VM里面注入并使用，
+6. 第六部分：Model的注册和调用（这部分比较复杂，需要多熟练使用）
+  a. 给模型添加可通知属性；在App.xaml.cs里面依赖注册Model的单例
+  b. 可以在VM里面声明只读属性来调用Model，通过构造函数注入由DI容器自动提供的参数，暴露Model的数据供View绑定
  
  
 
