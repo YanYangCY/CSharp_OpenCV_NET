@@ -137,8 +137,9 @@
 
         <!-- 切换模式 -->
         <CheckBox Grid.Column="2" Grid.ColumnSpan="2" Style="{DynamicResource BlueSwitchStyle}" IsChecked="{Binding AppStatus.IsOnline, Mode=TwoWay}"
-             IsEnabled="{Binding AStatus.InitStatus,Converter={StaticResource InitStatusConvert}}"
+             IsEnabled="{Binding AppStatus.InitStatus,Converter={StaticResource InitStatusConvert}}"
                  Command="{Binding SwitchRunModeCommand}" />
         <Label Grid.Column="4" Content="{Binding AppStatus.NumAdd}" HorizontalAlignment="Left" Margin="46,24,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Column="4" Content="{Binding AppStatus.InitStatus}" HorizontalAlignment="Left" Margin="50,47,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

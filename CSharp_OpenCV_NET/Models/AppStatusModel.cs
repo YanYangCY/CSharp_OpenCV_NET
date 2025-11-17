@@ -15,7 +15,7 @@ namespace CSharp_OpenCV_NET.Models
         public AppStatusModel() 
         {
             IsOnline = false;
-            InitStatus = 0xFE;
+            InitStatus = 0xFF;
             NumAdd = 0;
         }
         #region 可通知属性
