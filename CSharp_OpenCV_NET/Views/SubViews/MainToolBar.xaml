@@ -107,6 +107,42 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ToolButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Foreground" Value="#1296DB"/>
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"
+                                   FontFamily="/CSharp_OpenCV_NET;component/Assets/Fonts/#iconfont"/>
+                                <TextBlock Text="{TemplateBinding ToolTip}" Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#641790"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#9E9E9F"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#E2E2E2"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Opacity" Value="0.4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -141,5 +177,9 @@
                  Command="{Binding SwitchRunModeCommand}" />
         <Label Grid.Column="4" Content="{Binding AppStatus.NumAdd}" HorizontalAlignment="Left" Margin="46,24,0,0" VerticalAlignment="Top"/>
         <Label Grid.Column="4" Content="{Binding AppStatus.InitStatus}" HorizontalAlignment="Left" Margin="50,47,0,0" VerticalAlignment="Top"/>
+        
+        <!-- 用户登录 -->
+        <Button Margin="5 0 5 0" Grid.Column="11" Style="{StaticResource ToolButtonStyle}" Content="&#xe619;" ToolTip="用户登录" 
+        Command="{Binding UserLoginCommand}" />
     </Grid>
 </UserControl>

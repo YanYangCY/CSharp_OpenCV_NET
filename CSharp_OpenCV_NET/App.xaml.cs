@@ -51,6 +51,7 @@ namespace CSharp_OpenCV_NET
             services.AddTransient<MainWindow>();
             services.AddTransient<SplashWindow>();
             services.AddTransient<MainToolBar>();
+            services.AddTransient<UserLoginWindow>();
             // 注册ViewModel
             services.AddTransient<MainViewModel>();
             services.AddTransient<SplashViewModel>();
