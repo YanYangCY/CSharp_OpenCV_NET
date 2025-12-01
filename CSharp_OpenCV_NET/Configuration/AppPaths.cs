@@ -19,6 +19,9 @@ namespace CSharp_OpenCV_NET.Configuration
         // 日志目录
         public static string LogPath => Path.Combine(AppRoot, "Logs");
 
+        // 用户配置文件路径
+        public static string ConfigPath => Path.Combine(AppRoot, "Config");
+
 
         /// <summary>
         /// 确保应用程序运行所需的目录结构已创建。
@@ -33,7 +36,8 @@ namespace CSharp_OpenCV_NET.Configuration
         {
             var dirs = new[]
             {
-                LogPath
+                LogPath,
+                ConfigPath
             };
             foreach (var dir in dirs)
             {

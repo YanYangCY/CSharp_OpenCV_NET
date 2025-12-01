@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CSharp_OpenCV_NET.Log;
+using CSharp_OpenCV_NET.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace CSharp_OpenCV_NET.ViewModels
 
             // 初始化新建文件夹
             CSharp_OpenCV_NET.Configuration.AppPaths.EnsureDirectoriesExist();
+
+            // 创建用户模型实例
+            var userModel = new UserModel();
 
             MTLogger.Info("软件启动");
 

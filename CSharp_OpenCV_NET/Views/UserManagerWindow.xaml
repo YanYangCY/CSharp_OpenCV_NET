@@ -1,0 +1,49 @@
+﻿<Window x:Class="CSharp_OpenCV_NET.Views.UserManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSharp_OpenCV_NET.Views"
+        xmlns:convert="clr-namespace:CSharp_OpenCV_NET.Converter"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"      
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="用户管理" Height="300" Width="400">
+    <Window.Resources>
+        <convert:PassModifyConverter x:Key="PassModifyConvert"/>
+    </Window.Resources>
+    <Grid Margin="30" ShowGridLines="true">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="用户名: " Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" ItemsSource="{Binding User.UserList}" SelectedIndex="0" 
+                  DisplayMemberPath="Name" SelectedValue="{Binding User.SelectedUser}" SelectedValuePath="Name"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="新密码: " Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <PasswordBox x:Name="newPass" Grid.Row="1" Grid.Column="1" Margin="5"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="确认密码: " Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <PasswordBox x:Name="confirmNewPass" Grid.Row="2" Grid.Column="1" Margin="5" />
+        <Button Grid.Row="3" Grid.Column="1" Content="保存修改" Margin="5" Width="100" HorizontalAlignment="Right" Command="{Binding SaveModifyCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource PassModifyConvert}">
+                    <Binding ElementName="newPass"/>
+                    <Binding ElementName="confirmNewPass"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+        <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Foreground="Red" VerticalAlignment="Center" 
+           HorizontalAlignment="Center" Text="{Binding User.ErrorMessage}"/>
+    </Grid>
+</Window>

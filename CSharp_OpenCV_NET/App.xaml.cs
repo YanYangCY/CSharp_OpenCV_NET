@@ -45,19 +45,23 @@ namespace CSharp_OpenCV_NET
             var services = new ServiceCollection();
             /* 1. 先注册所有服务、VM、窗体 */
             // 把"导航服务"注册到 .NET 的依赖注入（DI）容器
-            //services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<INavigationService, NavigationService>();
             // 注册ViewModels,AddTransient每次请求该服务时都会创建一个新的实例
             // 注册Views
             services.AddTransient<MainWindow>();
             services.AddTransient<SplashWindow>();
             services.AddTransient<MainToolBar>();
             services.AddTransient<UserLoginWindow>();
+            services.AddTransient<UserManagerWindow>();
             // 注册ViewModel
             services.AddTransient<MainViewModel>();
             services.AddTransient<SplashViewModel>();
+            services.AddTransient<UserLoginViewModel>();
+            services.AddTransient<UserManagerViewModel>();
             
             // 注册Model，AddSingleton整个程序生命周期只创建 1 个 实例，全局共享
             services.AddSingleton<AppStatusModel>();
+            services.AddSingleton<UserModel>();
 
 
             // ========== 构建服务提供者 ==========
@@ -88,9 +92,10 @@ namespace CSharp_OpenCV_NET
             splash.DataContext = ServiceProvider!.GetRequiredService<SplashViewModel>();
             // 以模态方式显示启动屏（阻塞主线程，直到关闭）等它自己发消息关闭
             splash.ShowDialog();
-
             // 显示主窗口
             mainWindow?.Show();
+
+
         }
 
     }

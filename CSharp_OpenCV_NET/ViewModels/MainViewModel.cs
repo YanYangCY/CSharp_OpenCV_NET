@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CSharp_OpenCV_NET.Models;
+using CSharp_OpenCV_NET.Services;
 using CSharp_OpenCV_NET.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -16,16 +17,20 @@ namespace CSharp_OpenCV_NET.ViewModels
     {
         // 声明一个私有只读字段，用于存储AppStatusModel的引用
         private readonly AppStatusModel _appStatus;
+
+        private readonly INavigationService _navigationService;
         
-        private readonly IServiceProvider _serviceProvider;
+        //private readonly IServiceProvider _serviceProvider;
 
         // 通过构造函数注入AppStatusModel
         // 这个appStatus参数是由DI容器自动提供的
-        public MainViewModel(AppStatusModel appStatus, IServiceProvider serviceProvider)
+        //public MainViewModel(AppStatusModel appStatus, IServiceProvider serviceProvider)
+        public MainViewModel(AppStatusModel appStatus, INavigationService navigationService)
         {
             // 将传入的appStatus赋值给私有字段_appStatus
             _appStatus = appStatus;
-            _serviceProvider = serviceProvider;
+            //_serviceProvider = serviceProvider;
+            _navigationService = navigationService;
         }
 
         // 暴露AppStatus属性供View绑定
@@ -48,9 +53,12 @@ namespace CSharp_OpenCV_NET.ViewModels
         private void UserLogin()
         {
             // 从容器拿窗口
-            var loginWindow = _serviceProvider.GetRequiredService<UserLoginWindow>();
+            //var loginWindow = _serviceProvider.GetRequiredService<UserManagerWindow>();
+            //loginWindow.DataContext = _serviceProvider.GetRequiredService<UserManagerViewModel>();
             //loginWindow.Owner = App.Current.MainWindow;   // 可选，指定父窗口
-            loginWindow.ShowDialog();
+            //loginWindow.ShowDialog();
+            //_navigationService.ShowUserManagerDialog();
+            _navigationService.ShowUserLoginDialog();
         }
         #endregion
 

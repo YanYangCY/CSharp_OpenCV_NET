@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CSharp_OpenCV_NET.ViewModels;
+using CSharp_OpenCV_NET.Views;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,5 +49,50 @@ namespace CSharp_OpenCV_NET.Services
             // ShowDialog() 会返回 bool?，这里不需要返回值
             window?.ShowDialog();
         }
+
+        /// <summary>
+        /// 打开一个非模态窗口并自动设置 DataContext
+        /// </summary>
+        public void NavigateTo<TWindow, TViewModel>()
+            where TWindow : Window
+            where TViewModel : class
+        {
+            var window = _serviceProvider.GetRequiredService<TWindow>();
+            var viewModel = _serviceProvider.GetRequiredService<TViewModel>();
+            window.DataContext = viewModel;
+            window.Show();
+        }
+
+        /// <summary>
+        /// 以模态对话框形式打开窗口并自动设置 DataContext
+        /// </summary>
+        public void ShowDialog<TWindow, TViewModel>()
+            where TWindow : Window
+            where TViewModel : class
+        {
+            var window = _serviceProvider.GetRequiredService<TWindow>();
+            var viewModel = _serviceProvider.GetRequiredService<TViewModel>();
+            window.DataContext = viewModel;
+            window.ShowDialog();
+        }
+
+
+        #region 便携窗口导航方法
+        /// <summary>
+        /// 显示用户管理对话框（便捷方法）
+        /// </summary>
+        public void ShowUserManagerDialog()
+        {
+            ShowDialog<UserManagerWindow, UserManagerViewModel>();
+        }
+
+        /// <summary>
+        /// 显示用户登录对话框（便捷方法）
+        /// </summary>
+        public void ShowUserLoginDialog()
+        {
+            ShowDialog<UserLoginWindow, UserLoginViewModel>();
+        }
+        #endregion
     }
 }
