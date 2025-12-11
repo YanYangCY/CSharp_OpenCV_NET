@@ -181,5 +181,9 @@
         <!-- 用户登录 -->
         <Button Margin="5 0 5 0" Grid.Column="11" Style="{StaticResource ToolButtonStyle}" Content="&#xe619;" ToolTip="用户登录" 
         Command="{Binding UserLoginCommand}" />
+
+        <!-- 通讯设置 -->
+        <Button Margin="5 0 5 0" Grid.Column="10" Style="{StaticResource ToolButtonStyle}" Content="&#xe7A6;" ToolTip="用户登录" 
+        Command="{Binding UserLoginCommand}" />
     </Grid>
 </UserControl>

@@ -44,7 +44,9 @@
   h. 新建对应的用户管理窗口，可进行修改密码
   i. 登录高权限账号后，长时间无操作自动降级
 8. 第八部分：通讯模块-TCP、ADS   
-  a. 
+  a. NuGet程序包下载：SuperSocket、SuperSocket.ProtoBase
+  b. 创建TCP文件夹,创建相关文件
+  c. 将SocketServer在App.xaml.cs中注册单例,在SplashViewModel中进行初始化
 
 
 

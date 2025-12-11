@@ -1,5 +1,7 @@
-﻿using CSharp_OpenCV_NET.Views.SubViews;
+﻿using CSharp_OpenCV_NET.Communicate.TCP;
+using CSharp_OpenCV_NET.Views.SubViews;
 using Microsoft.Extensions.DependencyInjection;
+using SuperSocket.Server.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,5 +34,17 @@ namespace CSharp_OpenCV_NET.Views
         {
 
         }
+
+        // 关闭窗口时停止服务器
+        //SocketServer _server = new SocketServer();
+        //protected override async void OnClosed(EventArgs e)
+        //{
+        //    base.OnClosed(e);
+
+        //    if (_server != null)
+        //    {
+        //        await _server.Stop();
+        //    }
+        //}
     }
 }

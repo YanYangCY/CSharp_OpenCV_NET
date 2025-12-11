@@ -9,8 +9,8 @@ using log4net.Config;
 using System.IO;
 using CSharp_OpenCV_NET.Models;
 using CSharp_OpenCV_NET.Views.SubViews;
+using CSharp_OpenCV_NET.Communicate.TCP;
 
-//using CSharp_OpenCV_NET.ViewModels;
 
 namespace CSharp_OpenCV_NET
 {
@@ -62,6 +62,9 @@ namespace CSharp_OpenCV_NET
             // 注册Model，AddSingleton整个程序生命周期只创建 1 个 实例，全局共享
             services.AddSingleton<AppStatusModel>();
             services.AddSingleton<UserModel>();
+
+            // 注册TCP
+            services.AddSingleton<SocketServer>();
 
 
             // ========== 构建服务提供者 ==========

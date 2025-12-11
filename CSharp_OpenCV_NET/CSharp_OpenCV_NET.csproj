@@ -60,6 +60,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0-rc.1.25451.107" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="SuperSocket" Version="2.0.2" />
+    <PackageReference Include="SuperSocket.ProtoBase" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>

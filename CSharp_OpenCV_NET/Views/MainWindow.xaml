@@ -28,6 +28,8 @@
         <SubViews:MainToolBar Grid.Row="0" Grid.ColumnSpan="2" />
         <Button Content="Button" HorizontalAlignment="Left" Margin="416,93,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding ButtonAddNumCommand}"/>
         <Label  HorizontalAlignment="Left" Margin="228,93,0,0" Grid.Row="1" VerticalAlignment="Top" Content ="{Binding AppStatus.NumAdd}"/>
+        <Button Content="TCP测试" HorizontalAlignment="Left" Margin="416,237,0,0" Grid.Row="1" VerticalAlignment="Top" Command="{Binding TcpSendTestCommand}"/>
+
         <!--<Border Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="0" BorderBrush="LightGray">
             <SubViews:MainToolBar x:Name="ToolBarContainer"/>
         </Border>-->
